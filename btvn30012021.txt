@@ -1,0 +1,45 @@
+Kiến thức đã học ngày 29 tháng 1 năm 2021
+1. Cách gửi dữ liệu lên server
+
+1.1 Params
+Ví dụ:
+app.get("/:name/:pass", function(req, res) {
+    var name1 = req.params.name
+    res.json(name1)
+    })
+1.2 Query
+app.get("/apiv1", function(req, res) {
+     var number = req.query.number;
+     res.json(number)
+})
+1.3 Body
+- Cài body-parser: npm i body-parser
+- Thêm những dòng sau vào file app để sử dụng
+    var bodyParser = require('body-parser')
+    var jsonParser = bodyParser.json()
+    var urlencodedParser = bodyParser.urlencoded({ extended: false })
+ví dụ: Thêm mới vào một mảng giá trị cho trước 
+app.post("/user", function(req, res) {
+    var name = req.body.name
+    var password = req.body.password
+    var obj = {
+        name: name,
+        password: password
+    }
+    arr.unshift(obj)
+    res.json("them moi thanh cong")
+})
+1.4 Các method trong nodejs
+- không nhận dữ liệu từ người dùng
+GET: Hiển thị thông tin, dữ liệu từ người dùng
+- Nhận dữ liệu từ người dùng 
+PUT: Cập nhật dữ liệu theo điều kiện
+POST: các thứ không thuộc POST DELETE GET
+DELETE: Xóa dữ liệu theo điều kiện
+2. Tên api
+- đặt api theo chuẩn Restful, api làm gì thì đặt như thế
+get("/user"):hiển thị toàn bộ thông tin chứa trong mảng user
+get("/user/:id") hiển thị chi tiết 1 giá trị trong mảng user theo id có sẵn
+post("/user"):thêm mới 1 giá trị vào trong mảng
+put("/user/:id")cập nhật giá trị 1 bản ghi trong mảng user theo id có sẵn
+delete("/user/:id")xóa giá trị 1 bản ghi trong mảng user theo id có sẵn
